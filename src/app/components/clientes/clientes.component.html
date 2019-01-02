@@ -1,0 +1,24 @@
+<p>clientes table!</p>
+  <p-table [value]="clientes" selectionMode="single" [(selection)]="selectedClient" (onRowSelect)="onRowSelect($event)">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>DNI</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-client>
+        <tr [pSelectableRow]="client">
+            <td>{{client.nombre}}</td>
+            <td>{{client.apellidos}}</td>
+            <td>{{client.dni}}</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary" let-rowData>
+        <div style="text-align:left">
+            <button type="button" pButton icon="fa fa-plus" (click)="showDialogToAdd()" label="Add"></button>
+        </div>
+    </ng-template>   
+</p-table>
+
+<add-client [displayController]="displayController" [cliente]="cliente" [isNewClient]="isNewClient"></add-client>
